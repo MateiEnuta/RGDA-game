@@ -41,7 +41,7 @@ public class TowerPlacementController : MonoBehaviour
         RaycastHit hit;
         Vector3 positionInWorld = Vector3.zero;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition), out hit, 100))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition), out hit, 100000))
         {
             positionInWorld = hit.point;
         }
@@ -79,7 +79,7 @@ public class TowerPlacementController : MonoBehaviour
         RaycastHit hit;
         Vector3 positionInWorld = Vector3.zero;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition), out hit, 100))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(UnityEngine.Input.mousePosition), out hit, 100000))
         {
             positionInWorld = hit.point;
         }
