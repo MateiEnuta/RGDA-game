@@ -2,26 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static TowerPlacementController;
 
 public class BasicTroup : MonoBehaviour, IDamageable
 {
     [SerializeField] private float health;
     [SerializeField] private float speed;
 
-    private Vector3 TargetLocation;
-
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, TargetLocation, speed * Time.deltaTime);
-
-
-        // Temporar.
-        if (transform.position == TargetLocation) DestroyGameObject();
-    }
-
-    public void SetTargetLocation(Vector3 TargetLocation)
-    {
-        this.TargetLocation = TargetLocation;
+        transform.position = Vector3.MoveTowards(transform.position, MainBase.instance.transform.position, speed * Time.deltaTime);
     }
 
     public bool Damage(float amount)

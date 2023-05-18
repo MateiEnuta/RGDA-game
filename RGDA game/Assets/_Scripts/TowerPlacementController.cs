@@ -84,6 +84,7 @@ public class TowerPlacementController : MonoBehaviour
             positionInWorld = hit.point;
         }
 
-        Instantiate(towers[currentTowerIndex].towerPrefab, positionInWorld, Quaternion.identity);
+        GameObject tower = Instantiate(towers[currentTowerIndex].towerPrefab, positionInWorld, Quaternion.identity);
+        ObjectContainer.instance.AddTower(tower);
     }
 }

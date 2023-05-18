@@ -8,7 +8,8 @@ public class TroupeSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> troupsPrefabs;
     [SerializeField] private float troupsSpawnAmount;
     [SerializeField] private float troupsSpawnDelay;
-    [SerializeField] private Vector3 troupsMaxOffset, troupsSpawnPoint, troupsTargetLocation;
+    [SerializeField] private Vector3 troupsMaxOffset, troupsTargetLocation;
+    [SerializeField] private Vector3[] troupsSpawnPoints;
 
     private float LastTime = 0;
 
@@ -24,10 +25,7 @@ public class TroupeSpawner : MonoBehaviour
                 Vector3 troupOffset = new Vector3(Random.Range(-troupsMaxOffset.x, troupsMaxOffset.x), 0, Random.Range(-troupsMaxOffset.z, troupsMaxOffset.z));
 
                 int troupIndex = Random.Range(0, troupsPrefabs.Count);
-                GameObject newTroup = Instantiate(troupsPrefabs[troupIndex], troupsSpawnPoint + troupOffset, Quaternion.identity);
-
-                BasicTroup troupBrain = newTroup.GetComponent<BasicTroup>();
-                troupBrain.SetTargetLocation(troupsTargetLocation + troupOffset);
+                GameObject newTroup = Instantiate(troupsPrefabs[troupIndex], troupsSpawnPoints[Random.Range(0, troupsSpawnPoints.Length)] + troupOffset, Quaternion.identity);
 
                 ObjectContainer.instance.AddTrope(newTroup);
             }
