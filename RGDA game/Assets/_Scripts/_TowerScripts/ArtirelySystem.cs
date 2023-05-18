@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
-public class TowerFiringSystem : TowerSystem
+public class ArtirelySystem : TowerSystem
 {
-    [SerializeField] private float damage;
+    [SerializeField] private GameObject hailProjectile;
     [SerializeField] private float firingSpeed;
 
     private GameObject CurrentTarget = null;
@@ -26,13 +25,8 @@ public class TowerFiringSystem : TowerSystem
 
             tower.onTowerFire?.Invoke(CurrentTarget);
 
-            if (CurrentTarget.TryGetComponent<IDamageable>(out var component))
-            {
-                if (component.Damage(damage))
-                {
-                    tower.onTargetDestroyed?.Invoke();
-                }
-            }
+            Instantiate(hailProjectile, CurrentTarget.transform.position, Quaternion.identity);
+            CurrentTarget = null;
         }
     }
 

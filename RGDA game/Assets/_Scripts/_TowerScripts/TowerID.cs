@@ -7,5 +7,5 @@ public class TowerID : MonoBehaviour
 {
     public Action<GameObject> onTargetFound;
     public Action onTargetDestroyed;
-    public Action onTowerFire;
+    public Action<GameObject> onTowerFire;
 }
