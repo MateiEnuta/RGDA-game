@@ -7,7 +7,7 @@ public class HailProjectile : MonoBehaviour
 {
     [SerializeField] private float maxDistance;
     [SerializeField] private float duration;
-    [SerializeField] private float damangePerSecond;
+     private float damangePerSecond=10*PlayerLogic.Instance.Fiarevaloare();
     [SerializeField] protected float targetSerchInterval = 0.1f;
 
 

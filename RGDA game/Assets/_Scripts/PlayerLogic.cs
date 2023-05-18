@@ -10,7 +10,9 @@ public class PlayerLogic : MonoBehaviour
 
     private int wavenumber;
     private bool early;
-
+    private int matraguna=1;
+    private int fiare=1;
+    public static PlayerLogic Instance { get; private set; }
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -57,5 +59,22 @@ public class PlayerLogic : MonoBehaviour
         {
             early = false;
         }
+    }
+
+    public void Matragunaadd()
+    {
+        matraguna += 1;
+    }
+    public int Matragunavalue()
+    {
+        return matraguna;
+    }
+    public void Fiareadd()
+    {
+        fiare += 1;
+    }
+    public int Fiarevaloare()
+    {
+        return fiare;
     }
 }

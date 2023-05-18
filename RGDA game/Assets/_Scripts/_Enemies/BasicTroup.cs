@@ -12,6 +12,12 @@ public class BasicTroup : MonoBehaviour, IDamageable
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, MainBase.instance.transform.position, speed * Time.deltaTime);
+
+        if (Vector3.Equals(transform.position, MainBase.instance.transform.position))
+        {
+            MainBase.instance.Damage();
+            DestroyGameObject();
+        }
     }
 
     public bool Damage(float amount)

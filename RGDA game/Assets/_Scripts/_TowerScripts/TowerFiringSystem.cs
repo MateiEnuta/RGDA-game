@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TowerFiringSystem : TowerSystem
 {
-    [SerializeField] private float damage;
+     private float damage = PlayerLogic.instance.Matragunavalue();
     [SerializeField] private float firingSpeed;
 
     private GameObject CurrentTarget = null;
