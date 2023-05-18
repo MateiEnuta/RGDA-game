@@ -62,6 +62,15 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""cab4eb82-d8fc-4874-888e-361b507d3359"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeTower"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""523d684f-d290-402e-92ac-750a5fc993aa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
         m_PlayerInput_LeftClick = m_PlayerInput.FindAction("LeftClick", throwIfNotFound: true);
         m_PlayerInput_MousePosition = m_PlayerInput.FindAction("MousePosition", throwIfNotFound: true);
         m_PlayerInput_ChangeTower = m_PlayerInput.FindAction("ChangeTower", throwIfNotFound: true);
+        m_PlayerInput_Pause = m_PlayerInput.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_LeftClick;
     private readonly InputAction m_PlayerInput_MousePosition;
     private readonly InputAction m_PlayerInput_ChangeTower;
+    private readonly InputAction m_PlayerInput_Pause;
     public struct PlayerInputActions
     {
         private @CameraInput m_Wrapper;
@@ -237,6 +259,7 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
         public InputAction @LeftClick => m_Wrapper.m_PlayerInput_LeftClick;
         public InputAction @MousePosition => m_Wrapper.m_PlayerInput_MousePosition;
         public InputAction @ChangeTower => m_Wrapper.m_PlayerInput_ChangeTower;
+        public InputAction @Pause => m_Wrapper.m_PlayerInput_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
             @ChangeTower.started += instance.OnChangeTower;
             @ChangeTower.performed += instance.OnChangeTower;
             @ChangeTower.canceled += instance.OnChangeTower;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerInputActions instance)
@@ -274,6 +300,9 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
             @ChangeTower.started -= instance.OnChangeTower;
             @ChangeTower.performed -= instance.OnChangeTower;
             @ChangeTower.canceled -= instance.OnChangeTower;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerInputActions instance)
@@ -297,5 +326,6 @@ public partial class @CameraInput: IInputActionCollection2, IDisposable
         void OnLeftClick(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnChangeTower(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

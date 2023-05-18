@@ -7,7 +7,7 @@ public class HailProjectile : MonoBehaviour
 {
     [SerializeField] private float maxDistance;
     [SerializeField] private float duration;
-     private float damangePerSecond=10*PlayerLogic.Instance.Fiarevaloare();
+    private float damangePerSecond;
     [SerializeField] protected float targetSerchInterval = 0.1f;
 
 
@@ -16,6 +16,11 @@ public class HailProjectile : MonoBehaviour
         StartCoroutine(startLifeTimeTimer());
 
         StartCoroutine(StartSerchLoop());
+    }
+
+    private void Update()
+    {
+        damangePerSecond = 10 * PlayerLogic.Instance.Fiarevaloare();
     }
 
     private IEnumerator startLifeTimeTimer()

@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSensitivity = 10f;
     [SerializeField] private float orbitOffSet = 10f;
+    [SerializeField] private UIManager uiManager;
 
     private CameraInput inputActions;
 
@@ -21,6 +22,12 @@ public class CameraController : MonoBehaviour
         inputActions.PlayerInput.Enable();
         inputActions.PlayerInput.LeftClick.started += LeftClick_started;
         inputActions.PlayerInput.ChangeTower.started += ChangeTower_started;
+        inputActions.PlayerInput.Pause.started += Pause_started;
+    }
+
+    private void Pause_started(InputAction.CallbackContext obj)
+    {
+        uiManager.PauseGame();
     }
 
     private void ChangeTower_started(InputAction.CallbackContext obj)

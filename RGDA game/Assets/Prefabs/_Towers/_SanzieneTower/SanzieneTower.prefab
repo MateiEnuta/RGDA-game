@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20ab5812c7dfd34791ba7c24ef31ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingSpeed: 1
+  firingSpeed: 0.5
 --- !u!1 &4548684596235713541
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308ae0cd2b1c71c4e8983003f2f06d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 15
+  maxDistance: 40
   targetSerchInterval: 0.1
 --- !u!1001 &8355611456009613863
 PrefabInstance:
